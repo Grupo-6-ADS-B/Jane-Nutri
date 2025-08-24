@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Login e cadastro | FittNUtri</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-header">
+            <div class="titles">
+                <div class="title-login">Login</div>
+                <div class="title-register">Cadastro</div>
+            </div>
+        </div>
+
+        <form action="#" class="login-form" autocomplete="off">
+            <div class="input-box">
+                <input type="text" class="input-field" id="log-email" required>
+                <label for="log-email" class="label">Email</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="log-pass" required>
+                <label for="log-pass" class="label">Senha</label>
+                <i class='bx bx-lock-alt icon' ></i>
+            </div>
+            <div class="form-cols">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </div>
+            <div class="input-box">
+                <button class="btn-submit" id="SignInBtn">Acessar <i class='bx bx-log-in' ></i></button>
+            </div>
+            <!-- Botões de Login Social -->
+            <div class="social-login">
+                <div class="social-text">Faça login com:</div>
+                <button type="button" class="google-btn">
+                    <i class='bx bxl-google'></i> Google
+                </button>
+                <button type="button" class="btn-submit instagram-btn">
+                    <i class='bx bxl-instagram'></i> Instagram
+                </button>
+            </div>
+            <div class="switch-form">
+                <span>Ainda não tem uma conta? <a href="#" onclick="registerFunction()">Cadastre-se</a></span>
+            </div>
+        </form>
+
+
+        <form action="#" class="register-form" autocomplete="off">
+            <div class="input-box">
+                <input type="text" class="input-field" id="reg-name" required>
+                <label for="reg-name" class="label">Nome</label>
+                <i class='bx bx-user icon' ></i>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" id="reg-email" required>
+                <label for="reg-email" class="label">Email</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="reg-pass" required>
+                <label for="reg-pass" class="label">Senha</label>
+                <i class='bx bx-lock-alt icon' ></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="reg-confirm-pass" required>
+                <label for="reg-confirm-pass" class="label">Confirmar Senha</label>
+                <i class='bx bx-lock-alt icon' ></i>
+            </div>
+            <div class="form-cols">
+                <div class="col-1">
+                    <input type="checkbox" id="agree">
+                    <label for="agree"> Aceito os termos e condições</label>
+                </div>
+                <div class="col-2"></div>
+            </div>
+            <div class="input-box">
+                <button class="btn-submit" id="SignUpBtn">Cadastre-se <i class='bx bx-user-plus' ></i></button>
+            </div>
+            <div class="switch-form">
+                <span>Já tem uma conta? <a href="#" onclick="loginFunction()">Faça login</a></span>
+            </div>
+        </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
