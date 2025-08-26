@@ -1,0 +1,208 @@
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #e5f9ee;
+}
+
+.login-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5f9ee;
+}
+
+.card-container {
+  position: relative;
+  width: 440px;           
+  min-height: 540px;    
+  perspective: 1200px;
+  padding: 32px 0;        
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  min-height: 540px;     
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0.95) translateY(30px);
+  pointer-events: none;
+  transition: 
+    opacity 0.5s cubic-bezier(.4,0,.2,1),
+    transform 0.5s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 8px 32px 0 rgba(60,60,60,0.10);
+  border-radius: 22px;  
+  z-index: 1;
+  padding: 40px 36px 32px 36px; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.login-card {
+  background: #fff;
+  color: #1a3d2c;
+  border: 2.5px solid #2ecc71;
+}
+
+
+.register-card {
+  background: #fff;                
+  color: #ff9100;                 
+  border: 2.5px solid #ff9100;     
+}
+
+.register-card .card-title {
+  color: #ff9100;                  
+}
+
+.register-card .input-group input {
+  background: #fff3e0;
+  color: #ff9100;
+  border: 1.5px solid #ff9100;    
+}
+
+.register-card .input-group input:focus {
+  border-color: #ff9100;           
+}
+.register-card .btn.register-btn {
+  background: #fff;                
+  color: #ff9100;                 
+  border: 2px solid #ff9100;      
+}
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #020202;
+  pointer-events: none;
+  font-size: 1.2rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 3rem; 
+  border-radius: 10px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 1.08rem;
+  outline: none;
+  background: #f8f8f8;
+  color: #222;
+  transition: border 0.2s;
+}
+
+.login-card .input-group input:focus {
+  border-color: #2ecc71;
+}
+.register-card .input-group input:focus {
+  border-color: #fff;
+}
+
+.login-card .input-group input {
+  background: #f8f8f8;
+  color: #222;
+}
+.register-card .input-group input {
+  background: #fff3e0;
+  color: #ff9100;
+  border: 1.5px solid #ff9100;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1.1rem 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-btn {
+  background: #2ecc71;
+  color: #fff;
+}
+.login-btn:hover {
+  background: #27ae60;
+}
+
+.register-btn {
+  background: #fff;
+  color: #ff9100;
+  border: 2px solid #ff9100;
+}
+.register-btn:hover {
+  background: #ff9100;
+  color: #fff;
+  border: 2px solid #ff9100;
+}
+
+.switch-link {
+  margin-top: 1.7rem;
+  text-align: center;
+  font-size: 1.08rem;
+  color: inherit;
+}
+.switch-link button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.modal-msg {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  z-index: 9999;
+  box-shadow: 0 2px 16px 0 rgba(60,60,60,0.10);
+  animation: fadeIn 0.3s;
+}
+.modal-msg.success {
+  background: #2ecc71;
+  color: #fff;
+}
+.modal-msg.error {
+  background: #ffffff;
+  color: #ff5252;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px);}
+  to { opacity: 1; transform: translateX(-50%); }
+}
