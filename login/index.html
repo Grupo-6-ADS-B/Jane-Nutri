@@ -36,7 +36,6 @@
             <div class="input-box">
                 <button class="btn-submit" id="SignInBtn">Acessar <i class='bx bx-log-in' ></i></button>
             </div>
-            <!-- Botões de Login Social -->
             <div class="social-login">
                 <div class="social-text">Faça login com:</div>
                 <button type="button" class="google-btn">
@@ -50,7 +49,6 @@
                 <span>Ainda não tem uma conta? <a href="#" onclick="registerFunction()">Cadastre-se</a></span>
             </div>
         </form>
-
 
         <form action="#" class="register-form" autocomplete="off">
             <div class="input-box">
@@ -87,6 +85,14 @@
                 <span>Já tem uma conta? <a href="#" onclick="loginFunction()">Faça login</a></span>
             </div>
         </form>
+
+        <div id="notification-popup" class="notification-popup">
+        <div class="message-container">
+            <span class="message-icon"></span>
+            <p class="message-text"></p>
+        </div>
+        <div class="progress-bar"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>

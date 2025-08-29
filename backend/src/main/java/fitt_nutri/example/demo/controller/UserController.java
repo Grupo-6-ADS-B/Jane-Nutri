@@ -24,29 +24,17 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserModel> createUser(@Valid @RequestBody UserModel userModel) {
 
-            UserModel newUser = userService.createUser(userModel);
-            if(userRepository.existsByCpf(userModel.getCpf())){
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-            } else if(userRepository.existsByEmail(userModel.getEmail())){
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-            } else if(userRepository.existsByCrn(userModel.getCrn())){
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-            } else {
-            return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
-        }
+        UserModel newUser = userService.createUser(userModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
 
     }
 
+
     @GetMapping
     public ResponseEntity<List<UserModel>> listUsers() {
-        try {
             List<UserModel> users = userService.listUsers();
             return ResponseEntity.ok(users);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
+
 
     }
 
@@ -63,8 +51,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserModel> updateUserById(@PathVariable Integer id, @Valid @RequestBody UserModel userModel){
-        if(!userRepository.existsById(id)){
+    public ResponseEntity<UserModel> updateUserById(@PathVariable Integer id, @RequestBody UserModel userModel) {
+        if (!userRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         } else {
             userModel.setId(id);
@@ -73,24 +61,23 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{crn}")
-    public ResponseEntity<UserModel> updateUserByCrn(@PathVariable String crn, @Valid @RequestBody UserModel userModel){
-        if(!userRepository.existsByCrn(crn)){
+
+    @PutMapping("/crn/{crn}")
+    public ResponseEntity<UserModel> updateUserByCrn(@PathVariable String crn, @RequestBody UserModel userModel) {
+        List<UserModel> matchingUsers = userRepository.findByCrnContaining(crn);
+
+        if (matchingUsers.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        } else {
-            UserModel existingUser = userRepository.findAll().stream()
-                    .filter(user -> user.getCrn().equals(crn))
-                    .findFirst()
-                    .orElse(null);
-            if (existingUser != null) {
-                userModel.setId(existingUser.getId());
-                UserModel updatedUser = userRepository.save(userModel);
-                return ResponseEntity.ok(updatedUser);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-            }
         }
+
+        UserModel existingUser = matchingUsers.get(0);
+
+        userModel.setId(existingUser.getId());
+        UserModel updatedUser = userRepository.save(userModel);
+
+        return ResponseEntity.ok(updatedUser);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
@@ -108,6 +95,7 @@ public class UserController {
         userRepository.deleteAll();
         return ResponseEntity.noContent().build();
     }
+
 
 
 }
