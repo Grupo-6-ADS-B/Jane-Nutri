@@ -4,16 +4,18 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class UserModel {
 
     @Id
@@ -25,11 +27,10 @@ public class UserModel {
     private String nome;
 
     @NotBlank(message = "CPF não pode estar vazio")
-    @CPF(message = "CPF inválido")
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    @Pattern(regexp = "^\\d{1,6}/[A-Z]{2}$", message = "CRN deve estar no formato XXXXX/UF")
+    @Pattern(regexp = "^\\d{1,6}/[A-Z]{2}$", message = "CRN deve estar no formato 12345/UF")
     @Column(nullable = false)
     private String crn;
 
@@ -42,7 +43,6 @@ public class UserModel {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", message = "A senha deve ter no mínimo 8 caracteres, incluindo letras e números")
     @Column(nullable = false)
     private String senha;
 }
