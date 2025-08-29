@@ -6,7 +6,7 @@
     --background-color: #0d1936;
     --background-dark: #000;
     --shadow-color: #0e0000;
-    --white-color: #fffffff3;
+    --white-color: #ffffff;
     --black-color: #000;
     --input-border-color: #000000;
     --transition-3s: 0.4s;
@@ -355,3 +355,73 @@ body.register-mode .switch-form a {
     }
 }
 
+.notification-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transform: translateX(150%);
+    transition: transform 0.5s ease-in-out;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-popup.show {
+    transform: translateX(0);
+}
+
+.notification-popup.success {
+    background-color: #2ecc71; 
+    color: #fff;
+}
+
+.notification-popup.error {
+    background-color: #e74c3c; 
+    color: #fff;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.message-icon {
+    font-size: 24px;
+}
+
+.notification-popup.success .message-icon::before {
+    content: '\2713'; 
+}
+
+.notification-popup.error .message-icon::before {
+    content: '\2715'; 
+}
+
+.message-text {
+    margin: 0;
+    font-weight: 500;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    animation: progress-fill 4s linear forwards; 
+}
+
+@keyframes progress-fill {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
