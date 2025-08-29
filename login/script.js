@@ -8,7 +8,6 @@ const registerConfirmPass = document.getElementById("reg-confirm-pass");
 const wrapper = document.querySelector(".wrapper");
 const loginTitle = document.querySelector(".title-login");
 const registerTitle = document.querySelector(".title-register");
-
 const loginBtn = document.getElementById("SignInBtn"); 
 const loginEmail = document.getElementById("log-email");
 const loginPass = document.getElementById("log-pass");
